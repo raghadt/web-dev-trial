@@ -1,12 +1,14 @@
-<h2>My HORSES</h2>
+<h2>My kawl horses</h2>
 <ul class="horses">
   <li *ngFor="let horse of horses"
   [class.selected]="horse === selectedHorse"
    (click)="onSelect(horse)">
-
+   <a routerLink="/detail/{{horse.id}}">
     <span class="badge">{{horse.id}}</span> {{horse.name}}
+  </a>
   </li>
 </ul>
+
 
 <app-horse-detail [horse]="selectedHorse"></app-horse-detail>
 

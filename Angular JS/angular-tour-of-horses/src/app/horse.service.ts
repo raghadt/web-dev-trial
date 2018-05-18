@@ -9,11 +9,18 @@ import {MessageService} from './message.service';
 
 export class HorseService {
 
+  getHorses(): Observable<Horse[]> {
+    // TODO: send the message _after_ fetching the heroes
+    this.messageService.add('HorseService: fetched heroes');
+    return of(HORSE);
+  }
+
   constructor(private messageService: MessageService) { }
 
-  getHorses(): Observable<Horse[]> {
-    this.messageService.add('HorseService: fetched horses');
-    return of(HORSE);
+  getHorse(id: number): Observable<Horse> {
+    // TODO: send the message _after_ fetching the hero
+    this.messageService.add(`HorseService: fetched horse id=${id}`);
+    return of(HORSE.find(horse => horse.id === id));
   }
 
 }
